@@ -12,7 +12,7 @@ def main():
     train_x = X[:split]; train_y = Y[:split]
     test_x = X[split:]; test_y = Y[split:]
     model = Modeler(train_x, train_y, test_x, test_y)
-    model.train(batch_size=batch_size, epochs=3)
+    model.train(batch_size=batch_size, epochs=1)
     model.test(batch_size=batch_size)
 
 if __name__ == '__main__':
