@@ -1,2 +1,3 @@
-After 1 epoch: 69.7% accuracy
-after 3 epochs: 72.3% accuracy
+Accuracy: 69.8%
+Training up/down ratio: 0.498
+Testing up/down ratio: 0.502
