@@ -42,6 +42,9 @@ def process(data, inter_length=100, overlap=90):
 
     for i in range(num_intervals):
         interval = data[i*diff:i*diff+inter_length]
+        # is final close price greater than starting close price
+        labels[i] = int(interval[-1, 3] > interval[-10, 3])
+        interval = interval[:overlap]
         # min-max scaling
         mins = np.min(interval, axis=0)
         maxs = np.max(interval, axis=0)
@@ -50,8 +53,7 @@ def process(data, inter_length=100, overlap=90):
         interval[np.isnan(interval)] = 0
         # 90 minutes of previous data
         batched_data[i] = interval[:overlap]
-        # is final close price greater than starting close price
-        labels[i] = int(interval[-1, 3] > interval[-10, 3])
+        
 
     print('Finished processing')
     return batched_data, labels
